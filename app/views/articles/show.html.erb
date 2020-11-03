@@ -9,12 +9,12 @@
   <strong>Text:</strong>
   <%= @article.text %>
 </p>
-<h2>Comment:</h2>
+<h3>Comment:</h3>
 <%= render @article.comments %>
 
-<h2>Add a comment:</h2>
+<h3>Add a comment:</h3>
 <%= render 'comments/form' %>
 
 
-<%= link_to 'Edit', edit_article_path(@article) %> |
-<%= link_to 'Back', articles_path %>
+<%= link_to 'Edit', edit_article_path(@article), class:"btn btn-primary"%> &nbsp; &nbsp;
+<%= link_to 'Back', articles_path, class: "btn btn-info" %>
