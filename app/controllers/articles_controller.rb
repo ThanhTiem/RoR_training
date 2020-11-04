@@ -2,7 +2,9 @@ class ArticlesController < ApplicationController
   before_action :set_article, only: [:show, :edit, :update, :destroy]
 
   def index
-    @articles = Article.all
+    # @articles = Article.all
+    # @articles = Article.search(params[:search])
+    @articles = Article.where("text LIKE '%#{params[:search]}%'")
   end
 
   def show
@@ -49,10 +51,6 @@ class ArticlesController < ApplicationController
     end
   end
 
-  def search
-    @article = Article.where('text LIKE :search OR name LIKE :search', search: "%#{params[:search]}%")
-  end
-
 
   private
     def set_article
@@ -61,7 +59,7 @@ class ArticlesController < ApplicationController
     def article_params
       params.require(:article).permit(:title, :text)
     end
-    def search_params
-      params.require(:article).permit(:search)
-    end
+    # def search_params
+    #   params.require(:article).permit(:search)
+    # end
 end
